@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>rpg</title>
+    <style type="text/css">
+        #heroStatus {
+            position: absolute;
+            left: 100px;
+            top: 30px;
+            width: 100px;
+            border: solid black 2px;
+            padding: .25em;
+            z-index: 999;
+        } 
+        #orcStatus {
+            position: absolute;
+            left: 600px;
+            top: 30px;
+            width: 100px;
+            border: solid black 2px;
+            padding: .25em;
+            z-index: 999;
+        } 
+        
+    </style>
+    
+    <script type="text/javascript"
+            src = "../simpleGame.js"></script>
+    <script type="text/javascript">
+    
+    var game;
+    var hero;
+    var orc;
+    
+    function Character(name, image){
+        //base character - subclass for hero and monster
+        tChar = new Sprite(game, image, 64, 64);
+        tChar.name = name;
+        
+        //change these stats to change performance
+        tChar.hitPerc = 50; // perc likelihood of hitting opponent
+        tChar.damage = 2;   // number of 6-sided dice to roll on a hit
+        tChar.defMod = 10;  // subtract from the opponent's hit perc
+        tChar.armor = 1;    // subtract from the opponent's damage
+        tChar.hp = 20;      // how much damage I can sustain
+        
+        tChar.showStats = function(){
+            status = "<strong>" + this.name + "</strong> <br />"
+            status += "hitPerc: " + this.hitPerc + "<br />";
+            status += "damage: " + this.damage + "<br />";
+            status += "def mod: " + this. defMod + "<br />";
+            status += "armor: " + this.armor + "<br />";
+            status += "hp: " + this.hp
+            
+            return status;
+        } // end showStatus
+    
+        tChar.fight = function(enemy){
+            //asumes enemy is also based on tChar
+            hitPerc = (this.hitPerc - enemy.defMod) / 100;
+            if (Math.random() < hitPerc){
+                //alert("Hit!");
+                damage = 0;
+                for (i = 0; i < this.damage; i++){
+                    damage += parseInt(Math.random() * 6); 
+                } // end for
+
+                damage -= enemy.armor;
+                enemy.hp -= damage;
+                
+                if (enemy.hp <= 0){
+                    alert(enemy.name + " is dead!")
+                    document.location.href = "";
+                } // end 'enemy dead' if
+            } // end "hit" if
+    
+        } // end fight
+    
+        return tChar;
+    }  // end character
+        
+    function Hero(){
+        tHero = new Character("hero", "hero.png");
+        
+        tHero.loadAnimation(512, 256, 64, 64);
+        tHero.generateAnimationCycles();
+        tHero.renameCycles(new Array("up", "left", "down", "right"));
+        tHero.setAnimationSpeed(500);
+        
+        //leave all stats at their default values
+        
+        tHero.pause = function(){
+            this.setSpeed(0);
+            this.setCurrentCycle("down");
+            this.pauseAnimation();
+        }// end
+        
+        tHero.checkKeys = function(){
+            if (keysDown[K_LEFT]){
+                this.setSpeed(1);
+                this.playAnimation();
+                this.setMoveAngle(270);
+                this.setCurrentCycle("left");
+            }
+            if (keysDown[K_RIGHT]){
+                this.setSpeed(1);
+                this.playAnimation();
+                this.setMoveAngle(90);
+                this.setCurrentCycle("right");
+            }
+            
+            if (keysDown[K_UP]){
+                this.setSpeed(1);
+                this.playAnimation();
+                this.setMoveAngle(0);
+                this.setCurrentCycle("up");                
+            }
+            
+            if (keysDown[K_DOWN]){
+                this.setSpeed(1);
+                this.playAnimation();
+                this.setMoveAngle(180);
+                this.setCurrentCycle("down");
+            }
+            
+            if (keysDown[K_SPACE]){
+                this.pause();
+            } // end if
+            
+        } // end checkKeys
+        
+        tHero.checkCollision = function(){
+            //predictive collision detection
+
+            if (this.collidesWith(orc)){
+                //back up and pause
+                this.x -= this.dx;
+                this.y -= this.dy;
+                this.pause();
+                fight();
+            }
+            
+        }  // end checkCollision
+        
+        tHero.pause();
+        
+        return tHero;
+    } // end hero
+    
+    function Orc(){
+        tOrc = new Character("orc", "orc.png");
+        
+        //orc is bigger than default but with weaker weapons
+        tOrc.hitPerc = 50; // perc likelihood of hitting opponent
+        tOrc.damage = 1;   // damage (d6) done on a sucessful hit
+        tOrc.defMod = 5;   // subtract from opponent's hitPerc
+        tOrc.armor = 1     // subtract from opponent's damage
+        tOrc.hp = 50;      // amount of damage I can sustain
+           
+        tOrc.setSpeed(0);
+        
+        tOrc.setPosition(300, 200);
+        
+        return tOrc;
+    } // end orc
+        
+    function fight(){
+        hero.fight(orc);
+        orc.fight(hero);
+        
+        heroStatus.innerHTML = hero.showStats();
+        orcStatus.innerHTML = orc.showStats();
+    } // end fight function
+    
+    function init(){
+        
+        game = new Scene();
+        hero = new Hero();
+        orc = new Orc();
+        
+        heroStatus = document.getElementById("heroStatus");
+        orcStatus = document.getElementById("orcStatus");
+        
+        heroStatus.innerHTML = hero.showStats();
+        orcStatus.innerHTML = orc.showStats();
+        
+        game.start();
+    } // end init
+    
+    function update(){
+        game.clear();
+        
+        hero.checkKeys();
+        hero.checkCollision();
+        
+        hero.update();
+        orc.update();
+    
+    } // end update
+    
+    </script>
+</head>
+<body onload = "init()">
+    <div id = "heroStatus"></div>
+    <div id = "orcStatus"></div>
+</body>
+</html>

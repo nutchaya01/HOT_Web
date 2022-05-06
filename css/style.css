@@ -1,0 +1,49 @@
+body {
+  background-image: url("../assets/maine.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+a.card-title {
+  color: white !important;
+}
+
+a.card-title:hover {
+  color: #C84343 !important;
+}
+
+.head-section {
+    background-color: rgb(73, 73, 73, 0.8);
+    color: white;
+    width: 60%;
+}
+
+.btn-call-to-action {
+    background-color: #C84343 !important;
+    color: white !important;
+    font-size: 1.25rem !important;
+}
+
+.btn-call-to-action:hover {
+    background-color: #8C2E2E !important;
+    color: white !important;
+}
+
+.btn-DL {
+  background-color: #C84343 !important;
+  color: white !important;
+}
+
+.btn-DL:hover {
+  background-color: #8C2E2E !important;
+  color: white !important;
+}
+
+.card {
+  width: 25rem !important;
+  height: 10rem !important;
+  margin: 1rem 2rem !important;
+  color: white !important;
+  background-color: rgb(73, 73, 73, 0.8)  !important;
+}

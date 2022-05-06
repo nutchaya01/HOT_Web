@@ -7,6 +7,7 @@
     <meta name="author" content="" />
     <title>QMS Guide</title>
     <link rel="icon" type="image/x-icon" href="assets/qmbico.ico" />
+    <link rel="stylesheet" href="./css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
@@ -22,7 +23,22 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="./game/spaceMarble.html">Game1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./game/marble/marble.html">Game2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./game/mole/mole.html">Game3</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./game/platform/platform.html">Game4</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./game/rpg/rpg.html">Game5</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./game/tanks/tanks.html">Game6</a>
               </li>
             </ul>
           </div>
@@ -33,7 +49,7 @@
             <div class="head-section text-center p-4 m-5 rounded">
                 <h1 class="display-3 fw-bold">SOP For You!</h1>
                 <h4 class="fs-4">There are documents for you.</h4>
-                <a class="btn btn-call-to-action my-3" onclick="CallToAction()">Call to Action</a>
+                <a class="btn btn-call-to-action my-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Call to Action</a>
                 <p>select topic for view, select download for download</p>
             </div>
         </div>
@@ -47,7 +63,7 @@
                         <div class="card-body">
                           <a href="files/Activate_Windows_Server.pdf" target="_blank" class="card-title h5">Activate Windows Server</a>
                           <p class="card-text">Activate Windows Server 2016</p>
-                          <a href="download/Activate Windows Server.docx" download class="btn btn-primary">Download</a>
+                          <a href="download/Activate Windows Server.docx" download class="btn btn-DL">Download</a>
                         </div>
                     </div>
                 </div>
@@ -57,7 +73,7 @@
                         <div class="card-body">
                           <a href="files/SF_Domain.pdf" target="_blank" class="card-title h5">Domain</a>
                           <p class="card-text">Join user Shopfloor Domain</p>
-                          <a href="download/SF_Domain.pdf" target="_blank" download class="btn btn-primary">Download</a>
+                          <a href="download/SF_Domain.pdf" target="_blank" download class="btn btn-DL">Download</a>
                         </div>
                     </div>
                 </div>
@@ -67,7 +83,7 @@
                         <div class="card-body">
                           <a href="files/pluginsSOP.pdf" target="_blank" class="card-title h5">Plugins</a>
                           <p class="card-text">Install plug-in for Mainmenu!</p>
-                          <a href="files/pluginsSOP.pdf" download class="btn btn-primary">Download</a>
+                          <a href="files/pluginsSOP.pdf" download class="btn btn-DL">Download</a>
                         </div>
                     </div>
                 </div>
@@ -77,7 +93,7 @@
                         <div class="card-body">
                           <a href="files/NetFx3_SOP.pdf" target="_blank" class="card-title h5">NetFx3</a>
                           <p class="card-text">How to install Netfx3!</p>
-                          <a href="files/NetFx3_SOP.pdf" download class="btn btn-primary">Download</a>
+                          <a href="files/NetFx3_SOP.pdf" download class="btn btn-DL">Download</a>
                         </div>
                     </div>
                 </div>
@@ -87,7 +103,7 @@
                         <div class="card-body">
                           <a href="files/AlwaysOn IP.pdf" target="_blank" class="card-title h5">AlwaysOn IP</a>
                           <p class="card-text">How to AlwaysOn IP SQL Server!</p>
-                          <a href="download/AlwaysOn IP.docx" download class="btn btn-primary">Download</a>
+                          <a href="download/AlwaysOn IP.docx" download class="btn btn-DL">Download</a>
                         </div>
                     </div>
                 </div>
@@ -97,7 +113,7 @@
                         <div class="card-body">
                           <a href="files/How to install SQLServer2016TH.pdf" target="_blank" class="card-title h5">SQL Server 2016</a>
                           <p class="card-text">Activate Windows Server 2016</p>
-                          <a href="download/Activate Windows Server.docx" download class="btn btn-primary">Download</a>
+                          <a href="download/Activate Windows Server.docx" download class="btn btn-DL">Download</a>
                         </div>
                     </div>
                 </div>
@@ -106,8 +122,8 @@
                         <div class="card-body">
                           <a href="files/serverlist/QMS-serverlist.pdf" target="_blank" class="card-title h5">QMS Server List F4 F6 F7</a>
                           <p class="card-text">How to install SQL Server 2016</p>
-                          <a href="files/serverlist/qms-server-sort.pdf" target="_blank" class="btn btn-primary">Sort by Rack</a>
-                          <a href="download/serverlist/QMS-serverlist.xlsx" download class="btn btn-primary">Download</a>
+                          <a href="files/serverlist/qms-server-sort.pdf" target="_blank" class="btn btn-primary btn-DL">Sort by Rack</a>
+                          <a href="download/serverlist/QMS-serverlist.xlsx" download class="btn btn-DL">Download</a>
                         </div>
                     </div>
                 </div>
@@ -116,7 +132,7 @@
                         <div class="card-body">
                           <a href="files/dbmail.pdf" target="_blank" class="card-title h5">Database Mail</a>
                           <p class="card-text">How to setup Database mail in SQL server</p>
-                          <a href="download/dbmail.docx" download class="btn btn-primary">Download</a>
+                          <a href="download/dbmail.docx" download class="btn btn-DL">Download</a>
                         </div>
                     </div>
                 </div>
@@ -126,8 +142,8 @@
                         <div class="card-body">
                           <p class="card-title h5">Access Database Engine</p>
                           <p class="card-text">Install Access Database Engine who cannot upload file!</p>
-                          <a href="download/AccessDatabase/AccessDatabaseEngine.exe" download class="btn btn-primary">Download</a>
-                          <a href="download/AccessDatabase/AccessDatabaseEngine_X64.exe" download class="btn btn-primary">Download x64</a>
+                          <a href="download/AccessDatabase/AccessDatabaseEngine.exe" download class="btn btn-DL">Download</a>
+                          <a href="download/AccessDatabase/AccessDatabaseEngine_X64.exe" download class="btn btn-DL">Download x64</a>
                         </div>
                     </div>
                 </div>
@@ -145,7 +161,7 @@
                         <div class="card-body">
                           <a href="files/Windows server 2012 DC Group Policy to Disable USB.pdf" target="_blank" class="card-title h5">GPO to Disable USB</a>
                           <p class="card-text">How to disable USB devices via Group Policy </p>
-                          <a href="download/DC组策略禁用U盘与DVD SOP.DOCX" download class="btn btn-primary">Download</a>
+                          <a href="download/DC组策略禁用U盘与DVD SOP.DOCX" download class="btn btn-DL">Download</a>
                         </div>
                     </div>
                 </div>
@@ -156,7 +172,7 @@
                         <div class="card-body">
                           <a href="files/SF_Domain.pdf" target="_blank" class="card-title h5">Domain</a>
                           <p class="card-text">Join user Shopfloor Domain</p>
-                          <a href="download/SF_Domain.pdf" target="_blank" download class="btn btn-primary">Download</a>
+                          <a href="download/SF_Domain.pdf" target="_blank" download class="btn btn-primary btn-DL">Download</a>
                         </div>
                     </div>
                 </div>
@@ -164,12 +180,34 @@
 
 
             </div>
-        </div>
+        </div>  
     </section>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                    <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+                </svg>
+                Welcome
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Select topic for view, select download for download
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-DL" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
     
-        
 <!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
 </body>
@@ -177,36 +215,10 @@
 
 <!-- JS -->
 <script>
-    function CallToAction() {
-        alert('select topic for view, select download for download')
-    }
 
 </script>
 
 <!-- CSS -->
 <style lang="css">
-body {
-  background-image: url("assets/maine.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
-.head-section {
-    background-color: white;
-    width: 60%;
-}
-.btn-call-to-action {
-    background-color: #C84343;
-    color: white;
-    font-size: 1.25rem;
-}
-.btn-call-to-action:hover {
-    background-color: #8C2E2E;
-    color: white;
-}
-.card {
-    width: 25rem;
-    height: 10rem;
-    margin: 1rem 2rem;
-}
+
 </style>
