@@ -1,0 +1,14 @@
+1.copy file "MSWINSCK.OCX" to "C:\Windows\SysWOW64"
+
+2.Run as Administrator  "cmd"
+
+3.register file ..
+
+cd /
+cd Windows\SysWOW64
+regsvr32 MSWINSCK.OCX
+
+4.install suceed!
+
+
+
